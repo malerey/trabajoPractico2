@@ -50,21 +50,21 @@ function precioMaquina(componentes) {
 
 // //Parte 1b
 
-// function cantidadVentasComponente(componente) {
-//     var countUnits = 0;
+function cantidadVentasComponente(componente) {
+    var countUnits = 0;
 
-//     for (var i = 0; i < local.ventas.length; i++) {
+    for (var i = 0; i < local.ventas.length; i++) {
 
-//         for (var j = 0; j < local.ventas[i].componentes.length; j++) {
+        for (var j = 0; j < local.ventas[i].componentes.length; j++) {
 
-//             if (local.ventas[i].componentes[j] === componente) {
-//                 countUnits += 1;
+            if (local.ventas[i].componentes[j] === componente) {
+                countUnits += 1;
 
-//             }
-//         }
-//     }
-//     return countUnits;
-// }
+            }
+        }
+    }
+    return countUnits;
+}
 
 
 // console.log(cantidadVentasComponente("Monitor GPRS 3000")); //3
@@ -79,29 +79,29 @@ function precioMaquina(componentes) {
 
 //Parte 1c - VER de mejorarlo con los comentarios de Male para no harcodear los nombres
 
-// function vendedoraDelMes(mes, anio) {
-//     var vendedoraGrace = 0;
-//     var vendedoraAda = 0;
+function vendedoraDelMes(mes, anio) {
+    var vendedoraGrace = 0;
+    var vendedoraAda = 0;
+    for (var i = 0; i < local.ventas.length; i++) {
 
-//     for (var i = 0; i < local.ventas.length; i++) {
+        var month = local.ventas[i].fecha.getMonth();
+        var year = local.ventas[i].fecha.getFullYear();
 
-//         var month = local.ventas[i].fecha.getMonth();
-//         var year = local.ventas[i].fecha.getFullYear();
+        if (month + 1 === mes && year === anio && local.ventas[i].nombreVendedora === "Grace") {
+            vendedoraGrace += precioMaquina(local.ventas[i].componentes)
+        } else if (month + 1 === mes && year === anio && local.ventas[i].nombreVendedora === "Ada") {
+            vendedoraAda += precioMaquina(local.ventas[i].componentes)
+        }
+    }
+    if (vendedoraGrace > vendedoraAda) {
+        return ("Grace")
+    } else {
+        return ("Ada")
+    }
+}
 
-//             if (month + 1 === mes && year === anio && local.ventas[i].nombreVendedora === "Grace") {
-//                 vendedoraGrace += precioMaquina(local.ventas[i].componentes)
-//             } else if (month + 1 === mes && year === anio && local.ventas[i].nombreVendedora === "Ada") {
-//                 vendedoraAda += precioMaquina(local.ventas[i].componentes)
-//             } 
-//     }
-//     if( vendedoraGrace > vendedoraAda) {
-//         return("Grace")
-//     } else {
-//         return ("Ada")
-//     }
-// }
 
-// console.log(vendedoraDelMes(1, 2019)); // "Ada" (vendio por $670, una máquina de $320 y otra de $350)
+console.log(vendedoraDelMes(1, 2019)); // "Ada" (vendio por $670, una máquina de $320 y otra de $350)
 
 //Parte 1d
 
@@ -113,9 +113,9 @@ function ventasMes(mes, anio) {
         var month = local.ventas[i].fecha.getMonth();
         var year = local.ventas[i].fecha.getFullYear();
 
-            if (month + 1 === mes && year === anio) {
-                ventasDelMes += precioMaquina(local.ventas[i].componentes)
-            } 
+        if (month + 1 === mes && year === anio) {
+            ventasDelMes += precioMaquina(local.ventas[i].componentes)
+        }
     }
     return ventasDelMes;
 }
@@ -125,34 +125,34 @@ function ventasMes(mes, anio) {
 
 //Parte 1e
 
-// function ventasVendedora(nombre) {
-//     var ventasVendedora = 0;
+function ventasVendedora(nombre) {
+    var ventasVendedora = 0;
 
-//         for (var i = 0; i < local.ventas.length; i++) {
-//             if (local.ventas[i].nombreVendedora === nombre) {
-//                 ventasVendedora += precioMaquina(local.ventas[i].componentes)
-//             }
-//         }
+    for (var i = 0; i < local.ventas.length; i++) {
+        if (local.ventas[i].nombreVendedora === nombre) {
+            ventasVendedora += precioMaquina(local.ventas[i].componentes)
+        }
+    }
 
-//     return ventasVendedora
-// }
+    return ventasVendedora
+}
 
 // console.log(ventasVendedora("Grace")); // 900
 // console.log(ventasVendedora("Ada")); // 670
 
 //Parte 1f
 
-// function componenteMasVendido() {
-//     var arrayCantMasVendidos = [];
-//     var arrayMasVendidos = [];
+function componenteMasVendido() {
+    var arrayCantMasVendidos = [];
+    var arrayMasVendidos = [];
 
-//     for (var i = 0; i < local.precios.length; i++) {
-//         arrayCantMasVendidos.push(cantidadVentasComponente(local.precios[i].componente));
-//         arrayMasVendidos.push(local.precios[i].componente)
-//     }
-//     var indexItemMasVendido = arrayCantMasVendidos.indexOf(Math.max.apply(null, arrayCantMasVendidos));
-//     return arrayMasVendidos[indexItemMasVendido];
-// }
+    for (var i = 0; i < local.precios.length; i++) {
+        arrayCantMasVendidos.push(cantidadVentasComponente(local.precios[i].componente));
+        arrayMasVendidos.push(local.precios[i].componente)
+    }
+    var indexItemMasVendido = arrayCantMasVendidos.indexOf(Math.max.apply(null, arrayCantMasVendidos));
+    return arrayMasVendidos[indexItemMasVendido];
+}
 
 // console.log(componenteMasVendido()); // Monitor GPRS 3000
 
@@ -231,19 +231,19 @@ local.ventas.push(var15);
 
 //Parte 2d
 
-// function ventasSucursal(sucursal) {
-//     var tienda = 0;
+function ventasSucursal(sucursal) {
+    var tienda = 0;
 
-//     for (var m = 0; m < local.ventas.length; m++) {
+    for (var m = 0; m < local.ventas.length; m++) {
 
-//         if (local.ventas[m].sucursal === sucursal) {
+        if (local.ventas[m].sucursal === sucursal) {
 
-//             tienda += precioMaquina(local.ventas[m].componentes);
-//         }
+            tienda += precioMaquina(local.ventas[m].componentes);
+        }
 
-//     }
-//     return tienda;
-// }
+    }
+    return tienda;
+}
 // console.log(ventasSucursal("Centro")); // 4195
 // console.log(ventasSucursal("Caballito")); // 1265
 
@@ -285,39 +285,39 @@ local.ventas.push(var15);
 // console.log(ventasSucursalVendedora("Hedy")); // 690
 
 //Parte 2f - VER "Hardcodeado?"
-// function sucursalDelMes(mes, anio) {
-//     var centro = 0;
-//     var caballito = 0;
+function sucursalDelMes(mes, anio) {
+    var centro = 0;
+    var caballito = 0;
 
 
-//     for (var i = 0; i < local.ventas.length; i++) {
+    for (var i = 0; i < local.ventas.length; i++) {
 
-//         var month = local.ventas[i].fecha.getMonth();
-//         var year = local.ventas[i].fecha.getFullYear();
+        var month = local.ventas[i].fecha.getMonth();
+        var year = local.ventas[i].fecha.getFullYear();
 
-//         if (month + 1 === mes && year === anio) {
-//             if (local.ventas[i].sucursal === "Centro") {
-//                 centro += precioMaquina(local.ventas[i].componentes)
-//             } else {
-//                 caballito += precioMaquina(local.ventas[i].componentes)
-//             }
-//         }
-//     }
+        if (month + 1 === mes && year === anio) {
+            if (local.ventas[i].sucursal === "Centro") {
+                centro += precioMaquina(local.ventas[i].componentes)
+            } else {
+                caballito += precioMaquina(local.ventas[i].componentes)
+            }
+        }
+    }
 
-//     if (centro > caballito) {
-//         return "Centro";
-//     } else {
-//         return "Caballito";
-//     }
+    if (centro > caballito) {
+        return "Centro";
+    } else {
+        return "Caballito";
+    }
 
-// }
+}
 // console.log(sucursalDelMes(1, 2019)); // "Centro"
 
-//Parte 3a
+//Parte 3a - ver el UNDEFINED
 function renderPorMes() {
     var mesesNum = [1,2,3,4,5,6,7,8,9,10,11,12];
     var mesesLetras = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-   
+
 
     console.log("Ventas por mes:")
 
@@ -330,4 +330,56 @@ function renderPorMes() {
 }
 
 console.log( renderPorMes() );
+
+//Parte 3b - ver el UNDEFINED
+// function renderPorSucursal(){
+
+//    for (var a = 0; a < local.sucursal.length; a++) {
+//        console.log("Total de " + local.sucursal[a] + ": " + ventasSucursal(local.sucursal[a]))
+//    }
+
+// }
+
+// console.log( renderPorSucursal() );
+
+//Parte 3c
+// function render() {
+//     console.log("Reporte");
+//     renderPorMes();
+//     console.log("Ventas por sucursal: ")
+//     renderPorSucursal();
+//     console.log("Producto estrella: " + componenteMasVendido());
+
+//     var ventasTotales = [];
+
+//     for (var b = 0; b < local.vendedoras.length; b++) {
+//         var objetoNuevo = {
+//             nombre: "",
+//             ventas: 0,
+//         }
+
+//         objetoNuevo.nombre = local.vendedoras[b];
+//         objetoNuevo.ventas = ventasVendedora(local.vendedoras[b]);
+
+//         ventasTotales.push(objetoNuevo)
+
+//     }
+
+//     var montosTotales = [];
+
+//     for (var t = 0; t < local.vendedoras.length; t++) {
+//         montosTotales.push(ventasVendedora(local.vendedoras[t]));
+//     }
+
+//     var montosTotalesMax = Math.max(...montosTotales);
+
+//     for (var s = 0; s < ventasTotales.length; s++) {
+//         if (ventasTotales[s].ventas === montosTotalesMax) {
+//             console.log(ventasTotales[s].nombre)
+//         }
+//     }
+
+// }
+
+// console.log( render() );
 
