@@ -393,7 +393,7 @@ function sucursalDelMes(mes, anio) {
 
 console.log("Resultado funcion sucursalMes ",sucursalDelMes(1, 2019)); // "Centro"
 
-//Parte 3a 
+//Parte 3a - imprime un undefined porque no estoy retornando nada. 
 function renderPorMes() {
     var mesesNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     var mesesLetras = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
@@ -412,13 +412,12 @@ function renderPorMes() {
 
 console.log(renderPorMes());
 
-//Parte 3b - ver el UNDEFINED
+//Parte 3b - imprime un undefined porque no estoy retornando nada. 
 function renderPorSucursal(){
 
    for (var a = 0; a < local.sucursal.length; a++) {
        console.log("Total de " + local.sucursal[a] + ": " + ventasSucursal(local.sucursal[a]))
    }
-
 
 }
 
