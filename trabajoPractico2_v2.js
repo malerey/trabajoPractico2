@@ -1,3 +1,10 @@
+// Mar, te dejo mis observaciones a tu TP
+// Lamentablemente no hay mucho, mas que mostrarte maneras alternativas de hacer algunas funciones para que explores
+// y sigas aprendiendo. 
+// El motivo por el cual hay pocas observaciones, sin embargo, es bueno: tu trabajo es realmente excelente. 
+// Y hay muy poco para agregar en esos casos, mas que un "Felicitaciones, y segui así!"
+
+
 var local = {
     vendedoras: ["Ada", "Grace", "Hedy", "Sheryl"],
 
@@ -152,6 +159,32 @@ function vendedoraDelMes(mes, anio) {
 
 }
 
+// una manera mas breve aun:
+
+// function vendedoraDelMes(mes, anio) {
+//   var ventasVendedoras = {};
+//   for (var i = 0; i < local.ventas.length; i++) {
+//     if (local.ventas[i].fecha.getMonth() + 1 === mes && local.ventas[i].fecha.getFullYear() === anio) {
+//       var vendedora = local.ventas[i].nombreVendedora;
+//       if (!ventasVendedoras[vendedora]) {
+//         ventasVendedoras[vendedora] = 0;
+//       }
+
+//       ventasVendedoras[vendedora] += precioMaquina( local.ventas[i].componentes );
+//     }
+//   }
+
+//   var max = vendedoras[0];
+
+//   for (var i = 0; i < vendedoras.length; i++) {
+//     if (max && ventasVendedoras[vendedoras[i]] > ventasVendedoras[max]) {
+//       max = vendedoras[i];
+//     }
+//   }
+
+//   return max;
+// }
+
 console.log("Resultado punto 1c -->", vendedoraDelMes(1, 2019)); // "Ada" (vendio por $670, una máquina de $320 y otra de $350)
 
 //Parte 1d
@@ -206,6 +239,9 @@ function ventasSucursalVendedora(string) {
     return total;
 }
 
+// excelente
+
+
 console.log("Resultado punto 1e -->",ventasSucursalVendedora("Grace")); // 900
 console.log("Resultado punto 1e -->",ventasSucursalVendedora("Ada")); // 670
 
@@ -228,6 +264,18 @@ function componenteMasVendido() {
 
 console.log("Resultado punto 1f -->",componenteMasVendido()); // Monitor GPRS 3000
 
+// bien! otra posible solucion es esta:
+// function componenteMasVendido () {
+//   var componente = local.precios[0].componente;
+
+//   for (var i = 0; i < local.precios.length; i++) {
+//     if (cantidadVentasComponente(local.precios[i].componente) > cantidadVentasComponente(componente)) {
+//       componente = local.precios[i].componente;
+//     }
+//   }
+
+//   return componente;
+// }
 //Parte 1g
 
 function huboVentas(mes, anio) {
@@ -239,6 +287,11 @@ function huboVentas(mes, anio) {
         return false
     }
 }
+
+// o mas breve aun:
+// function huboVentas (mes, anio) {
+//   return ventasMes(mes, anio) > 0;
+// }
 
 console.log("Resultado punto 1g -->",huboVentas(3, 2019)); // false
 
@@ -340,6 +393,8 @@ function ventasSucursalVendedora(string) {
     }
     return total;
 }
+
+// excelente, Mar!
 
 console.log("Resultado punto 2d -->",ventasSucursalVendedora("Centro")); // 4195
 console.log("Resultado punto 2d -->",ventasSucursalVendedora("Caballito")); // 1265
